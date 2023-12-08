@@ -49,4 +49,6 @@ int check(float input[7][7], int i) {
         }
     }
     return 0;
+
+    cout << "All Ok";
 }
