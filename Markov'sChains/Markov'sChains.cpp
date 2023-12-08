@@ -37,7 +37,7 @@ int main() {
         s[++l] = temp;
     }
 
-    for (auto it = s.cbegin(); it != s.cend(); s++) {
+    for (auto it = s.cbegin(); it != s.cend(); ++s) {
         cout << it->first << " " << it->second;
     }
 }
