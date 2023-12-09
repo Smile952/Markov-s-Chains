@@ -15,8 +15,8 @@ int main() {
     float el = 0;
     int n = 7;
 
-    int temp[7];
-    map<int, int[7]> s;
+    int temp[7] = {};
+    map<int, int[]> s = {};
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -26,23 +26,26 @@ int main() {
         }
     }
 
-    int k = -1; int l = -1;
+    int k = 0; int l = 0;
 
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (input[i][j] != 0 && i != j) {
-                temp[++k] = check(input, i);
+                s[l[k++]] = check(input, i);
             }
         }
-        s[++l] = temp;
+        l++;
     }
 
-    for (auto it = s.cbegin(); it != s.cend(); ++s) {
-        cout << it->first << " " << it->second;
+    for (const auto& elem : s) {
+        cout << elem.first;
+        for (int i = 0; i < n; i++) {
+            cout << elem.second[i];
+        }
     }
 }
 
-int check(float input[7][7], int i) {
+int check(float *input[7][7], int i) {
     for (int j = 0; j < 7; j++) {
         if (input[i][j] != 0 && i != j) {
             return j;
