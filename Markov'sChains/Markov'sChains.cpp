@@ -3,8 +3,10 @@
 
 using namespace std;
 
+int n = 7;
+
 int main() {
-    float input[7][7] = { {0.9,   0,   0, 0.9,   0,   0, 0.1},
+    float input[7][7] = { {0.9,   0,   0, 0.9,  0,   0, 0.1},
                          {  0, 0.3,   0,   0,   0,   0, 0.2},
                          {  0, 0.2, 0.9, 0.1,   0,   0,   0},
                          {0.1, 0.2, 0.1,   0,   0,   0, 0.1},
@@ -15,41 +17,34 @@ int main() {
     float el = 0;
     int n = 7;
 
-    int temp[7] = {};
-    map<int, int[]> s = {};
+    int exc[7]{};
 
-    for (int i = 0; i < n; i++) {
+    //Заполнение массива
+    /*for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             cin >> el;
             input[i][j] == el;
             el = 0;
         }
-    }
+    }*/
 
-    int k = 0; int l = 0;
 
+    //Проход по заполненной матрице
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            if (input[i][j] != 0 && i != j) {
-                s[l[k++]] = check(input, i);
+            //Если нашел страну для торгов, исключая саму себя
+            if (i != j && input[i][j] != 0) {
+                //Проверить ее на наличие в исключениях
+                check_exception(exc, j);
             }
-        }
-        l++;
-    }
-
-    for (const auto& elem : s) {
-        cout << elem.first;
-        for (int i = 0; i < n; i++) {
-            cout << elem.second[i];
         }
     }
 }
 
-int check(float *input[7][7], int i) {
-    for (int j = 0; j < 7; j++) {
-        if (input[i][j] != 0 && i != j) {
-            return j;
-        }
+bool check_exception(int *exc[7], int exc_item) {
+    if (exc[exc_item] != 0) {
+        return true;
     }
-    return 0;
+    else exc[exc_item] == 0;
+    return false;
 }
