@@ -1,8 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Markov'sChains"
+    "\\Markov'sChains",
+    "\\Markov'sChains\\x64\\Debug",
+    "\\x64\\Debug"
   ],
-  "SelectedNode": "\\Markov'sChains\\Markov'sChains.cpp",
+  "SelectedNode": "\\Markov'sChains\\x64",
   "PreviewInSolutionExplorer": false
 }
