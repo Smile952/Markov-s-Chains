@@ -6,12 +6,12 @@ using namespace std;
 int n = 7;
 int k = 0;
 
-void creatASet(int i, int input[7][7], int *clone_arr[7], int exc[7]) {
+void creatASet(int i, int input[7][7], int *clone_arr[49], int exc[7]) {
     for (int j = 0; j < n; j++) {
-        if(input[i, j] != 0 && i != j) {
+        if(input[i][j] != 0 && i != j) {
             if (exc[j] == 0){
                 exc[j] = 1;
-                *clone_arr[k] = j;
+                clone_arr[k] = &input[i][j];
                 k++;
                 creatASet(j, input, clone_arr, exc);
             }
@@ -28,12 +28,14 @@ int main() {
                         {0, 0, 0, 0, 1, 2, 0},
                         {0, 3, 0, 0, 0, 0, 5}
     };
-
-    int arr[7] = {};
-    int *clone_arr[7] = {};
-
-    for (int i = 0; i < n; i++) {
+    int exc[7]{};
+    int arr[49] = {};
+    int* clone_arr[49] = {};
+    for (int i = 0; i < 49; i++) {
         clone_arr[i] = &arr[i];
+    }
+    for (int i = 0; i < n; i++) {
+        exc[i] = 0;
         for (int j = i+1; j < n; j++) {
             int temp = 0;
             temp = input[i][j];
@@ -42,24 +44,19 @@ int main() {
         }
     }
 
-    int exc[7]{};
-    int k = 0;
-
     for (int i = 0; i < n; i++) {
-        k++;
         for (int j = 0; j < n; j++) {
             //Если нашел страну для торгов, не включая саму себя
             if (i != j && input[i][j] != 0) {
                 //Проверить ее на наличие в исключениях
                 if (exc[j] == 0) {
-                    exc[i] = 1;
+                    exc[j] = 1;
                     creatASet(j, input, clone_arr, exc);
-                    k = 0;
                 }
             }
         }
     }
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
+    for (int i = 0; i < k; i++) {
+        cout << arr[i] << " " << k << endl;
     }
 }
