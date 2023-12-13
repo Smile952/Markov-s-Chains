@@ -11,7 +11,7 @@ void creatASet(int i, int input[7][7], int *clone_arr[49], int exc[7]) {
         if(input[i][j] != 0 && i != j) {
             if (exc[j] == 0){
                 exc[j] = 1;
-                clone_arr[k] = &input[i][j];
+                *clone_arr[k] = j+1;
                 k++;
                 creatASet(j, input, clone_arr, exc);
             }
@@ -29,9 +29,9 @@ int main() {
                         {0, 3, 0, 0, 0, 0, 5}
     };
     int exc[7]{};
-    int arr[49] = {};
-    int* clone_arr[49] = {};
-    for (int i = 0; i < 49; i++) {
+    int arr[7] = {};
+    int* clone_arr[7] = {};
+    for (int i = 0; i < n; i++) {
         clone_arr[i] = &arr[i];
     }
     for (int i = 0; i < n; i++) {
@@ -47,11 +47,13 @@ int main() {
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             //Если нашел страну для торгов, не включая саму себя
-            if (i != j && input[i][j] != 0) {
+            if (input[i][j] != 0) {
                 //Проверить ее на наличие в исключениях
                 if (exc[j] == 0) {
                     exc[j] = 1;
+                    *clone_arr[k] = j + 1; k++;
                     creatASet(j, input, clone_arr, exc);
+                    
                 }
             }
         }
