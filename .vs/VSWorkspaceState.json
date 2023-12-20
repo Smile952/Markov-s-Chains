@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
+<<<<<<< HEAD
     "",
     "\\Markov'sChains"
+=======
+    ""
+>>>>>>> d14ab49d445bdef46bdaad0e41116d1828a31949
   ],
   "SelectedNode": "\\Markov'sChains\\Markov'sChains.cpp",
   "PreviewInSolutionExplorer": false
