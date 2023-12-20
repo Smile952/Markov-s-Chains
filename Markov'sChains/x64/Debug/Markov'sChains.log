@@ -1,2 +1,3 @@
 ﻿  Markov'sChains.cpp
-  Markov'sChains.vcxproj -> C:\Users\denis\source\repos\Markov'sChains\x64\Debug\Markov'sChains.exe
+C:\Users\denis\source\repos\Markov-s-Chains\Markov'sChains\Markov'sChains.cpp(50,41): warning C4554: "&": проверьте приоритет операторов на ошибки; для уточнения приоритета используйте скобки
+  Markov'sChains.vcxproj -> C:\Users\denis\Source\Repos\Markov-s-Chains\x64\Debug\Markov'sChains.exe
